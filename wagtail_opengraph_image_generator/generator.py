@@ -7,10 +7,9 @@ from base64 import urlsafe_b64encode
 
 from django.utils.html import strip_tags
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.templatetags.static import static
 
 from wagtail.core import hooks
-from wagtail.core.models import Collection
+from wagtail.core.models import Collection, Site
 from wagtail.images.models import Image as WagtailImage
 from wagtail.documents.models import Document
 
@@ -44,7 +43,7 @@ def create_default_og_image(
 ):
     folder = os.path.dirname(os.path.dirname(__file__))
 
-    og_generator_settings = OpenGraphImageGeneratorSettings.for_site(request.site)
+    og_generator_settings = OpenGraphImageGeneratorSettings.for_site(Site.objects.first())
 
     if og_generator_settings.default_background_image:
         with og_generator_settings.default_background_image.get_willow_image() as img:

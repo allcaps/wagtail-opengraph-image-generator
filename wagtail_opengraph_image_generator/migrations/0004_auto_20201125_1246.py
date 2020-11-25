@@ -7,7 +7,6 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0002_auto_20201125_1246'),
         ('wagtail_opengraph_image_generator', '0003_auto_20200421_1058'),
     ]
 

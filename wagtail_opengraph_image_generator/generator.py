@@ -1,21 +1,23 @@
-import os
 import html
-from io import BytesIO
-from PIL import Image, ImageDraw, ImageFont, ImageOps
-from cairosvg import svg2png
+import os
 from base64 import urlsafe_b64encode
+from io import BytesIO
 
-from django.utils.html import strip_tags
-from django.core.files.uploadedfile import InMemoryUploadedFile
-
+from cairosvg import svg2png
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 from wagtail.core import hooks
 from wagtail.core.models import Collection, Site
-from wagtail.images.models import Image as WagtailImage
 from wagtail.documents.models import Document
+from wagtail.images import get_image_model
+
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.utils.html import strip_tags
 
 from .conf import setting
 from .models import OpenGraphImageGeneratorSettings
 
+
+WagtailImage = get_image_model()
 
 OG_WIDTH = setting('IMAGE_WIDTH')
 OG_HEIGHT = setting('IMAGE_HEIGHT')

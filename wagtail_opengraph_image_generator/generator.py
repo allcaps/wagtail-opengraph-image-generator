@@ -123,6 +123,7 @@ def create_default_og_image(
         elif color == COLOR_WHITE:
             canvas.paste(COLOR_BLACK, [0, 0, OG_WIDTH, OG_HEIGHT])
     if company_logo:
+        company_logo = company_logo.convert("RGBA")
         canvas.paste(company_logo, (OG_PADDING, OG_PADDING), company_logo)
 
     # Prepare title lines to see where start drawing stuff
